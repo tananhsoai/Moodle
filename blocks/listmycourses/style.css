@@ -1,0 +1,8 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1;
+    border: 1px dofted red;
+    padding: 9px;
+    margin: 5px;
+}
