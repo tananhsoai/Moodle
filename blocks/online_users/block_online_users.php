@@ -96,7 +96,7 @@ class block_online_users extends block_base {
                 .ab {
                     margin-inline-end: 360px;
                     position: fixed;
-                    left: 690px;
+                    left: 590px;
                     direction: rtl;
                     display: inline-block;
                     color: black;

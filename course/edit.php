@@ -155,6 +155,7 @@ if ($editform->is_cancelled()) {
     // The form has been cancelled, take them back to what ever the return to is.
     redirect($returnurl);
 } else if ($data = $editform->get_data()) {
+
     // Process data if submitted.
     if (empty($course->id)) {
         // In creating the course.
@@ -186,6 +187,15 @@ if ($editform->is_cancelled()) {
         // Set the URL to take them too if they choose save and display.
         $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
     }
+
+    // Tạo câu lệnh SQL với các tham số ràng buộc
+    $sql = 'UPDATE {course} SET school_id = :school_id WHERE shortname = :shortname';
+    // Thực thi câu lệnh SQL với các giá trị tham số tương ứng
+    $params = array(
+        'school_id' => $data->school_id,
+        'shortname' => $data->shortname
+    );
+    $DB->execute($sql, $params);
 
     if (isset($data->saveanddisplay)) {
         // Redirect user to newly created/updated course.

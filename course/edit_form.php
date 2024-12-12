@@ -199,6 +199,21 @@ class course_edit_form extends moodleform {
             $mform->setConstants('idnumber', $course->idnumber);
         }
 
+        // Kết nối đến cơ sở dữ liệu và lấy danh sách các trường
+        global $DB;
+        $schools = $DB->get_records_menu('school', null, '', 'id, fullname');
+
+        // Tạo một mảng để chứa các tùy chọn
+        $options = [];
+        foreach ($schools as $id => $name) {
+            $options[$id] = $name;
+        }
+
+        // Thêm trường lựa chọn vào form
+        $mform->addElement('select', 'school_id', 'Chọn trường:', $options);
+        $mform->setType('school_id', PARAM_INT); // Đặt kiểu dữ liệu là số nguyên
+
+
         // Description.
         $mform->addElement('header', 'descriptionhdr', get_string('description'));
         $mform->setExpanded('descriptionhdr');

@@ -94,9 +94,9 @@ $grades = $DB->get_records_sql($sql, array($courseid));
 // Display the results in a table
 $table = new html_table();
 $table->head = array('STT','User Name' , 'Họ Tên Học Sinh');
-foreach ($quiz_names as $quiz) {
-    $table->head[] = $quiz->name;
-}
+// foreach ($quiz_names as $quiz) {
+//     $table->head[] = $quiz->name;
+// }
 $table->head[] = 'Điểm trung bình';
 $table->head[] = 'Học Lực';
 $failed_count = 0; 
@@ -115,7 +115,7 @@ foreach ($grades as $grade) {
     $student_total_grade = 0;
     foreach ($quiz_names as $quiz) {
         $diem = number_format($grade->{$quiz->name}, 2, '.', '');
-        $row[] = $diem;
+        // $row[] = $diem;
         $student_total_grade += $grade->{$quiz->name};
 
         // Cộng vào tổng điểm của tất cả học sinh (để tính trung bình sau)

@@ -69,7 +69,8 @@ class block_listmycourses extends block_base {
                             ON ra.contextid = ctx.id 
                             WHERE ra.userid = '.$USER->id.'
                         ) AS enrolled_courses ON enrolled_courses.instanceid = c.id
-                        WHERE c.id !=0 AND ra.roleid = (SELECT id FROM mdl_role WHERE shortname = "editingteacher");';
+                        WHERE c.id !=0 AND ra.roleid = (SELECT id FROM mdl_role WHERE shortname = "editingteacher")
+                        ORDER BY c.fullname;';
             $result = $DB->get_records_sql($sql);
             $table = "<style>    
                 td, th {padding: 1px}

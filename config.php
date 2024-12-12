@@ -28,3 +28,11 @@ require_once(__DIR__ . '/lib/setup.php');
 
 // There is no php closing tag in this file,
 // it is intentional because it prevents trailing whitespace problems!
+
+// Add block to the front page.
+if ($page->pagetype === 'my-index') {
+  if (!$DB->record_exists('block_instances', ['blockname' => 'helloname'])) {
+      $blockmanager = $page->blocks;
+      $blockmanager->add_block('helloname');
+  }
+}
